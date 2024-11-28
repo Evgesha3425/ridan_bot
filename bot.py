@@ -16,7 +16,7 @@ async def start(update: Update, context):
         [InlineKeyboardButton("Наш офис", callback_data='office')]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    await update.message.reply_text('Чем могу помочь?:', reply_markup=reply_markup)
+    await update.message.reply_text('Чем могу помочь?', reply_markup=reply_markup)
 
 # Обработка нажатий на кнопки
 async def button(update: Update, context):
