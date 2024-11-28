@@ -1,4 +1,5 @@
 import logging
+import os
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler
 
@@ -95,9 +96,13 @@ async def button(update: Update, context):
         await query.edit_message_text(text="Выберите, что вас интересует:", reply_markup=reply_markup)
 
 def main():
-    # Токен вашего бота (замените на ваш настоящий токен)
-    token = "7360880061:AAGGZ1hwq8_Dly-CchHhQatEOJL8H4wXuTw"
+    # Получаем токен из переменной окружения
+    token = os.getenv('BOT_TOKEN')  # Используем переменную окружения, которую мы добавили в Railway
     
+    if not token:
+        print("Ошибка: переменная окружения BOT_TOKEN не найдена!")
+        return
+
     # Создание приложения
     application = Application.builder().token(token).build()
 
